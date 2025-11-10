@@ -2,6 +2,8 @@
 
 A terminal-based YouTube video summarizer using **LangChain**, **OpenAI API**, and **FAISS** for Retrieval-Augmented Generation (RAG).
 
+![alt text](image.png)
+
 ## 📋 Features
 
 - **Fetch YouTube Transcripts**: Automatically retrieves video transcripts using `youtube-transcript-api`
