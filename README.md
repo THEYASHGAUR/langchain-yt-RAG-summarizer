@@ -1,23 +1,24 @@
 # 🎥 YouTube RAG Summarizer
 
-A terminal-based YouTube video summarizer using **LangChain**, **Gemini API**, and **FAISS** for Retrieval-Augmented Generation (RAG).
+A terminal-based YouTube video summarizer using **LangChain**, **OpenAI API**, and **FAISS** for Retrieval-Augmented Generation (RAG).
 
 ## 📋 Features
 
 - **Fetch YouTube Transcripts**: Automatically retrieves video transcripts using `youtube-transcript-api`
 - **Smart Text Chunking**: Splits transcripts into manageable chunks with `RecursiveCharacterTextSplitter`
-- **Gemini Embeddings**: Generates high-quality embeddings using Google's Gemini API
+- **OpenAI Embeddings**: Generates high-quality embeddings using OpenAI's text-embedding models
 - **FAISS Vector Store**: Efficiently stores and retrieves relevant transcript segments
-- **RAG Pipeline**: Combines retrieval with Gemini LLM for accurate, context-aware responses
+- **RAG Pipeline**: Combines retrieval with OpenAI's GPT models for accurate, context-aware responses
 - **Custom Prompts**: Ask any question about the video content
 - **Terminal-Based**: Simple, clean command-line interface
+- **Multiple Language Support**: Automatically handles different language transcripts
 
 ## 🛠️ Tech Stack
 
 - **Python 3.8+**
 - **LangChain**: Framework for building LLM applications
-- **Google Gemini API**: For embeddings and language model
-- **FAISS**: Vector database for similarity search
+- **OpenAI API**: For embeddings and language models
+- **FAISS**: Vector database for efficient similarity search
 - **youtube-transcript-api**: For fetching video transcripts
 
 ## 📦 Installation
@@ -25,6 +26,7 @@ A terminal-based YouTube video summarizer using **LangChain**, **Gemini API**, a
 ### 1. Clone or Download the Project
 
 ```bash
+git clone <repository-url>
 cd youtube
 ```
 
@@ -46,9 +48,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Set Up API Key
+### 4. Set Up Environment Variables
 
-1. Get your Google API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+1. Get your OpenAI API key from [OpenAI Platform](https://platform.openai.com/api-keys)
 2. Create a `.env` file in the project root:
 
 ```bash
@@ -61,7 +63,7 @@ cp .env.example .env    # macOS/Linux
 3. Add your API key to `.env`:
 
 ```
-GOOGLE_API_KEY=your_actual_api_key_here
+OPENAI_API_KEY=your_actual_openai_api_key_here
 ```
 
 ## 🚀 Usage
@@ -94,9 +96,11 @@ Your prompt: Summarize the video in 3 key points
 ✅ Transcript fetched successfully! Length: 15234 characters
 ✂️  Splitting transcript into chunks (size=1000, overlap=200)...
 ✅ Transcript split into 18 chunks
-🔢 Generating embeddings using Gemini...
-✅ Vector store created with 18 embeddings
-🔗 Setting up RAG chain with Gemini LLM...
+✂️  Splitting transcript into chunks (size=1000, overlap=200)...
+✅ Transcript split into 18 chunks
+🔢 Generating embeddings using OpenAI...
+✅ Vector store created successfully
+🔗 Setting up RAG chain with OpenAI LLM...
 ✅ RAG chain created successfully
 🤖 Generating response for: 'Summarize the video in 3 key points'...
 
@@ -159,7 +163,7 @@ You can customize the following parameters in `youtube_rag_summarizer.py`:
 - Try a different video with available transcripts
 
 ### "API Key Error"
-- Ensure your `.env` file exists and contains a valid `GOOGLE_API_KEY`
+- Ensure your `.env` file exists and contains a valid `OPENAI_API_KEY`
 - Check that you've activated the Gemini API in Google AI Studio
 
 ### "Module not found"
