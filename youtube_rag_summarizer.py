@@ -195,15 +195,15 @@ def create_rag_chain(vector_store, api_key):
     
     # Define a custom prompt template for better responses
     prompt_template = """You are a helpful AI assistant analyzing a YouTube video transcript. 
-Use the following pieces of context from the video transcript to answer the user's question.
-If you don't know the answer based on the context, just say that you don't have enough information.
+    Use the following pieces of context from the video transcript to answer the user's question.
+    If you don't know the answer based on the context, just say that you don't have enough information.
 
-Context from the video:
-{context}
+    Context from the video:
+    {context}
 
-Question: {question}
+    Question: {question}
 
-Provide a detailed and helpful answer based on the video content:"""
+    Provide a detailed and helpful answer based on the video content:"""
 
     PROMPT = PromptTemplate(
         template=prompt_template,
